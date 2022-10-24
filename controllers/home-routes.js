@@ -3,13 +3,11 @@ const { User, Post } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 
-// GET all galleries for homepage
+// GET all posts for homepage
 router.get('/', async (req, res) => {
   try {
-
-    //TODO: When we pass "posts" to the homepage it appears to be empty. I'm pretty sure the problem is here.
     const postData = await Post.findAll();
-    const posts = postData.map((x) => x.get({plain: true}));
+    const posts = postData.map((x) => x.get({ plain: true }));
 
     res.render('homepage', {
       posts,
@@ -20,6 +18,17 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// // Get one post
+// router.get('/post/:id', async (req, res) => {
+//   const postData = await Post.findByPk({
+//     where: {
+//       id: req.params.id
+//     },
+//   });
+//   const post = postData.get({ plain: true })
+//   res.json(post)
+// })
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
