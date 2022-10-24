@@ -1,12 +1,18 @@
 const router = require('express').Router();
-const { Gallery, Painting } = require('../models');
+const { User, Post } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 
 // GET all galleries for homepage
 router.get('/', async (req, res) => {
   try {
+
+    //TODO: When we pass "posts" to the homepage it appears to be empty. I'm pretty sure the problem is here.
+    const postData = await Post.findAll();
+    const posts = postData.map((x) => x.get({plain: true}));
+
     res.render('homepage', {
+      posts,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
