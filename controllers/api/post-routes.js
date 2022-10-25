@@ -26,4 +26,18 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+router.post('/', async (req, res) => {
+    try {
+        Post.create({
+            title: req.body.title,
+            content: req.body.content,
+            user_id: req.session.user_id
+        })
+        res.status(200).json({message: 'Post added successfully'})
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
 module.exports = router
