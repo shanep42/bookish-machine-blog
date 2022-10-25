@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     try {
         Post.create({
             title: req.body.title,
-            content: req.body.content,
+            content: req.body.content, 
             user_id: req.session.user_id
         })
         res.status(200).json({message: 'Post added successfully'})
@@ -39,5 +39,24 @@ router.post('/', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+router.delete('/:id', async (req, res) => {
+
+        Post.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.json({message: "dummy response"})
+        // .then(data => {
+        //     if (!data){
+        //         res.status(404).json({message: 'No post found with that id'})
+        //     }
+        //     res.status(200).json(res)
+        // })
+        // .catch (err => {
+        // res.status(500).json(res)
+        // })
+    })
 
 module.exports = router
