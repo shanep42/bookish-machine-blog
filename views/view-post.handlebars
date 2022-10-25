@@ -1,0 +1,7 @@
+{{> post-details post}}
+{{!-- TODO: Have comments appear here --}}
+{{#if loggedIn}}
+<input type="text" id="comment-content">
+<a id="comment-button"><button>+ Add Comment</button></a>
+{{/if}}
+<script src="/js/view-single-post.js"></script>

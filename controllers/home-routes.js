@@ -30,6 +30,8 @@ router.get('/', async (req, res) => {
 //   res.json(post)
 // })
 
+
+
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');

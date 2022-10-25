@@ -2,13 +2,14 @@ const postSubmission = async (event) => {
     const title = document.getElementById('post-title').value;
     const content = document.getElementById('post-content').value;
 
-    if (title && content){
+    if (title && content) {
         const response = await fetch('/api/post', {
             method: 'POST',
             body: JSON.stringify({ title, content }),
-            headers: { 'Content-Type': 'application/json'}
+            headers: { 'Content-Type': 'application/json' }
         })
-        window.location.replace = "http://localhost:3001"
+        console.log(response);
+        document.location.replace('/')
     }
 }
 
