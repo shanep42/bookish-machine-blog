@@ -27,7 +27,8 @@ router.get('/:id', async (req, res) => {
         let post = postData.dataValues
         res.render('view-post', {
             post,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            currentUser: req.session.username
         })
     } catch (err) {
         res.status(500).json(err)
