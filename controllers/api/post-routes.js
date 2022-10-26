@@ -25,6 +25,7 @@ router.get('/:id', async (req, res) => {
         // res.status(200).json(postData);
         // console.log('postData:', postData);
         let post = postData.dataValues
+        console.log(post);
         res.render('view-post', {
             post,
             loggedIn: req.session.loggedIn,
