@@ -3,5 +3,9 @@
 {{#if loggedIn}}
 <input type="text" id="comment-content">
 <a id="comment-button"><button>+ Add Comment</button></a>
+{{!-- TODO: Why is loggedIn working but not currentUser? and by working I mean accessible at this point in the code --}}
+<p>Commenting on post #<span id='post-id'>{{post.id}}</span> as <span id='user-name'>{{currentUser}}</span></p>
+{{else}}
+<p><a href="/login">Login</a> to comment</p>
 {{/if}}
 <script src="/js/view-single-post.js"></script>
